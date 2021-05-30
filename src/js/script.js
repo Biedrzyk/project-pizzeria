@@ -85,6 +85,11 @@
       menuContainer.appendChild(thisProduct.element);
 
     }
+
+    initAccordion() {
+      const thisProduct = this;
+      
+    }
   }
 
 
