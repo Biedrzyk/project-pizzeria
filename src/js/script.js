@@ -96,8 +96,6 @@
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
     }
 
-
-
     initAccordion() {
       const thisProduct = this;
 
@@ -129,6 +127,9 @@
       });
 
     }
+
+    initOrderForm(){};
+    processOrder(){};
 
   }
 
