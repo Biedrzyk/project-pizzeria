@@ -61,6 +61,7 @@
       thisProduct.data = data;
 
       thisProduct.renderInMenu();
+      thisProduct.getElements();
       thisProduct.initAccordion();
 
       console.log('new Product', thisProduct);
@@ -84,8 +85,18 @@
       /* add element to menu */
 
       menuContainer.appendChild(thisProduct.element);
-
     }
+    getElements() {
+      const thisProduct = this;
+
+      thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+      thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
+      thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
+      thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
+      thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+    }
+
+
 
     initAccordion() {
       const thisProduct = this;
@@ -105,8 +116,8 @@
 
         /* if there is active product and it's not thisProduct.element, remove class active from it */
 
-        for(let active of activeProduct){
-          if(active!== thisProduct.element){
+        for (let active of activeProduct) {
+          if (active !== thisProduct.element) {
             active.classList.remove(classNames.menuProduct.wrapperActive);
           }
         }
