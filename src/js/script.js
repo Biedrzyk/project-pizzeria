@@ -149,7 +149,7 @@
         event.preventDefault();
         thisProduct.processOrder();
       });
-    };
+    }
 
     processOrder() {
 
@@ -180,7 +180,7 @@
       thisProduct.priceElem.innerHTML = price;
 
 
-    };
+    }
 
   }
 
