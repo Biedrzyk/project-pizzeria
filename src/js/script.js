@@ -191,6 +191,14 @@
               price -= option.price;
             }
           }
+
+          const optionImage = thisProduct.imageWrapper.querySelector(paramId-optionId);
+
+          if (optionImage) {
+
+
+          }  
+
         }
       }
       // update calculated price in the HTML
