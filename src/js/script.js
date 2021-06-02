@@ -176,6 +176,7 @@
           console.log('optionID', optionId, 'option', option);
 
           const optionsIf = (formData[paramId] && formData[paramId].includes(optionId));
+
           // checking paramId in formData and if there is an optionId
           if (optionsIf) {
 
@@ -192,13 +193,16 @@
             }
           }
 
-          const optionImage = thisProduct.imageWrapper.querySelector(paramId-optionId);
+          const optionImage = thisProduct.imageWrapper.querySelector('{.paramId}'-'{optionId}');
 
           if (optionImage) {
-
-
-          }  
-
+            if (optionsIf) {
+              optionImage.classList.add(classNames.menuProduct.imageVisible);
+            }
+            else {
+              optionImage.classList.remove(classNames.menuProduct.imageVisible);
+            }
+          }
         }
       }
       // update calculated price in the HTML
