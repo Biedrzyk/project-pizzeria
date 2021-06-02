@@ -96,6 +96,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
     initAccordion() {
@@ -174,8 +175,9 @@
           const option = param.options[optionId];
           console.log('optionID', optionId, 'option', option);
 
+          const optionsIf = (formData[paramId] && formData[paramId].includes(optionId));
           // checking paramId in formData and if there is an optionId
-          if (formData[paramId] && formData[paramId].includes(optionId)) {
+          if (optionsIf) {
 
             // default state of the option - !option - not default
             if (!option.default == true) {
