@@ -193,7 +193,7 @@
             }
           }
 
-          const optionImage = thisProduct.imageWrapper.querySelector('{.paramId}'-'{optionId}');
+          const optionImage = thisProduct.imageWrapper.querySelector('.paramId-optionId');
 
           if (optionImage) {
             if (optionsIf) {
