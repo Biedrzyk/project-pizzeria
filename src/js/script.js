@@ -75,6 +75,9 @@
       const thisProduct = this;
 
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('updated', function () {
+        thisProduct.processOrder();
+      });
 
     }
 
@@ -215,6 +218,7 @@
           }
         }
       }
+      price *= thisProduct.amountWidget.value;
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
     }
@@ -251,7 +255,8 @@
       thisWidget.input.value = thisWidget.value;
 
       /* TODO: Add validation */
-      if (thisWidget.value !== newValue && !isNaN(newValue) && newValue >= (settings.amountWidget.defaultMin-1) && newValue <= (settings.amountWidget.defaultMax+1)) {
+      if (thisWidget.value !== newValue && !isNaN(newValue) && newValue >= (settings.amountWidget.defaultMin - 1) && newValue <= (settings.amountWidget.defaultMax + 1)) {
+        thisWidget.announce();
         thisWidget.value = newValue;
       }
     }
@@ -275,7 +280,7 @@
 
     }
 
-    announce () {
+    announce() {
       const thisWidget = this;
 
       const event = new Event('updated');
