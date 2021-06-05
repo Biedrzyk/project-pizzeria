@@ -64,7 +64,7 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
-      thisProduct.AmountWidget();
+      thisProduct.initAmountWidget();
       thisProduct.processOrder();
 
       console.log('new Product', thisProduct);
@@ -74,7 +74,7 @@
 
       const thisProduct = this;
 
-      thisProduct.AmountWidget = new AmountWidget(thisProduct.amountWIdgetElem);
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
 
     }
 
@@ -228,17 +228,33 @@
       console.log('constructor arguments: ', element);
 
       thisWidget.getElements(element);
+      thisWidget.setValue(thisWidget.input.value);
     }
 
-    getElements(element){
+    getElements(element) {
       const thisWidget = this;
-    
+
       thisWidget.element = element;
       thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
       thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
       thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
     }
-    
+
+    setValue(value) {
+
+      const thisWidget = this;
+
+      const newValue = parseInt(value);
+
+      /* TODO: Add validation */
+      if (thisWidget.value !== newValue && !isNaN(newValue)) {
+        thisWidget.value = newValue;
+      }
+
+      /*thisWidget.value = newValue;
+      thisWidget.input.value = thisWidget.value;*/
+    }
+
   }
 
 
