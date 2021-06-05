@@ -233,6 +233,7 @@
 
 
       thisWidget.getElements(element);
+      thisWidget.setValue(settings.amountWidget.defaultValue);
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
     }
@@ -253,7 +254,6 @@
       const newValue = parseInt(value);
 
       thisWidget.input.value = thisWidget.value;
-
       /* TODO: Add validation */
       if (thisWidget.value !== newValue && !isNaN(newValue) && newValue >= (settings.amountWidget.defaultMin - 1) && newValue <= (settings.amountWidget.defaultMax + 1)) {
         thisWidget.announce();
