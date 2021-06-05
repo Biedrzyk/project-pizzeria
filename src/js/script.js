@@ -69,6 +69,14 @@
       console.log('new Product', thisProduct);
     }
 
+    initAmountWidget() {
+
+      const thisProduct = this;
+
+      thisProduct.AmountWidget = new AmountWidget(thisProduct.amountWIdgetElem);
+
+    }
+
     renderInMenu() {
       const thisProduct = this;
 
