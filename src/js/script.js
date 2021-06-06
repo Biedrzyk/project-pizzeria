@@ -323,7 +323,7 @@
 
   }
 
-  class Cart {
+  class Cart{
     constructor(element) {
       const thisCart = this;
 
@@ -331,7 +331,7 @@
 
       thisCart.getElements(element);
 
-      console.log('new cart', thisCart);
+      console.log('new Cart', thisCart);
     }
 
     getElements(element){
@@ -374,6 +374,14 @@
       thisApp.initData();
       thisApp.initMenu();
     },
+
+    initCart: function(){
+      const thisApp = this;
+
+      const cartElement = document.querySelector(select.containerOf.cart);
+      thisApp.cart = new Cart (cartElem);
+    },
+
   };
 
 
