@@ -256,6 +256,13 @@
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
     }
+
+    addToCart() {
+      const thisProduct = this;
+
+      app.cart.add(thisProduct);
+    }
+
   }
 
   class AmountWidget {
