@@ -356,6 +356,12 @@
 
     }
 
+    add(menuProduct) {
+      // const thisCart = this;
+
+      console.log('adding product', menuProduct);
+    }
+
   }
 
   const app = {
