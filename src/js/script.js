@@ -308,7 +308,7 @@
           const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
 
           if(optionSelected) {
-            params[paramId].options = option.label;
+            params[paramId].options[optionId] = option.label;
           }
         }
       }
