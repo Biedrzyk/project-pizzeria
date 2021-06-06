@@ -255,6 +255,7 @@
       }
       price *= thisProduct.amountWidget.value;
       // update calculated price in the HTML
+      thisProduct.priceSingle = thisProduct.priceElem.innerHTML;
       thisProduct.priceElem.innerHTML = price;
     }
 
@@ -267,7 +268,14 @@
     prepareCartProduct() {
       const thisProduct = this;
 
-      const productSummary = {};
+      const productSummary = {
+
+        id: thisProduct.id,
+        name: thisProduct.name,
+        amount: thisProduct.amount,
+        priceSingle: thisProduct.priceSingle,
+        price: thisProduct.amountWidget.value*thisProduct.priceSingle,  
+      };
     }
 
   }
