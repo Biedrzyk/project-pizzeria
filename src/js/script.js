@@ -429,7 +429,7 @@
 
       console.log('adding product', menuProduct);
 
-      thisCart.products.push(menuProduct);
+      thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
       console.log('thisCart.products', thisCart.products);
 
     }
@@ -439,13 +439,13 @@
   class CartProduct {
     constructor(menuProduct,element) {
       const thisCartProduct = this;
-      thisCartProduct.id = menuProduct.id
-      thisCartProduct.name = menuProduct.name
-      thisCartProduct.price = menuProduct.price
-      thisCartProduct.params = menuProduct.params
-      thisCartProduct.amount = menuProduct.amount
-      thisCartProduct.priceSingle = menuProduct.priceSingle
-      /*thisCartProduct.amountWidget = menuProduct.amountWidget*/
+      thisCartProduct.id = menuProduct.id;
+      thisCartProduct.name = menuProduct.name;
+      thisCartProduct.price = menuProduct.price;
+      thisCartProduct.params = menuProduct.params;
+      thisCartProduct.amount = menuProduct.amount;
+      thisCartProduct.priceSingle = menuProduct.priceSingle;
+      thisCartProduct.amountWidget = menuProduct.amountWidget;
  
       thisCartProduct.getElements(element);
       console.log('thisCartProduct', thisCartProduct); 
@@ -454,7 +454,7 @@
     getElements(element) {
       const thisCartProduct = this;
       
-      thisCardProduct.dom = {};
+      thisCartProduct.dom = {};
 
       thisCartProduct.dom.wrapper = element;
       thisCartProduct.dom.amountWidget = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.amountWidget);
