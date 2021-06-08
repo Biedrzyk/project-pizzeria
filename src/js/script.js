@@ -436,8 +436,23 @@
 
     update () {
 
-      
+      const thisCart = this;
+      let deliveryFee = settings.cart.defaultDeliveryFee;
 
+      const totalNumber = 0;
+      const subTotalPrice = 0;
+
+      for (let product of thisCart.products) {
+        thisCart.totalNumber += product.amount;
+        thisCart.subTotalPrice += product.price;
+      }
+      if(thisCart.totalNumber == 0) {
+        thisCart.totalPrice = 0;
+        deliveryFee = 0;
+      }
+      else {
+        thisCart.totalPrice = thisCart.subTotalPrice + settings.cart.defaultDeliveryFee;  
+      }
     }
 
   }
