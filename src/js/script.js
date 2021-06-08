@@ -434,6 +434,12 @@
 
     }
 
+    update () {
+
+      
+
+    }
+
   }
 
   class CartProduct {
