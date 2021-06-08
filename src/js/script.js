@@ -457,8 +457,14 @@
         deliveryFee = 0;
       }
       else {
-        thisCart.totalPrice = thisCart.subTotalPrice + settings.cart.defaultDeliveryFee;  
+        thisCart.totalPrice = thisCart.subTotalPrice + deliveryFee;  
       }
+
+
+      thisCart.dom.deliveryFee.innerHTML = deliveryFee;
+      thisCart.dom.subTotalPrice.innerHTML = thisCart.subTotalPrice;
+      thisCart.dom.totalPrice.innerHTML = thisCart.subTotalPrice + deliveryFee;
+      thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
       console.log('totalNumber', totalNumber);
       console.log('subTotalPrice', subTotalPrice);
       console.log('deliveryFee', deliveryFee);
@@ -503,13 +509,6 @@
         thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amount;
         thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
       }); 
-
-
-
-      /*thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-      thisProduct.amountWidgetElem.addEventListener('updated', function () {
-        thisProduct.processOrder();
-      });*/
     }
 
   }
