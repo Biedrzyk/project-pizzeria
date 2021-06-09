@@ -424,8 +424,8 @@
         thisCart.update();
       });
 
-      thisCart.dom.remove.addEventListener('remove', function() {
-        thisCart.remove();
+      thisCart.dom.productList.addEventListener('remove', function(event) {
+        thisCart.remove(event.detail.cartProduct);
       });
 
     }
@@ -462,6 +462,7 @@
         thisCart.totalNumber += product.amount;
         thisCart.subTotalPrice += product.price;
       }
+
       if (thisCart.totalNumber == 0) {
         thisCart.totalPrice = 0;
         thisCart.deliveryFee = 0;
