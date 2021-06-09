@@ -408,7 +408,7 @@
       thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
       thisCart.dom.deliveryFee = thisCart.dom.wrapper.querySelector(select.cart.deliveryFee);
       thisCart.dom.subTotalPrice = thisCart.dom.wrapper.querySelector(select.cart.subTotalPrice);
-      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelector(select.cart.totalPrice);
+      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelectorAll(select.cart.totalPrice);
       thisCart.dom.totalNumber = thisCart.dom.wrapper.querySelector(select.cart.totalNumber);
     }
 
@@ -424,7 +424,7 @@
         thisCart.update();
       });
 
-      thisCart.dom.productList.addEventListener('remove', function(event) {
+      thisCart.dom.productList.addEventListener('remove', function (event) {
         thisCart.remove(event.detail.cartProduct);
       });
 
@@ -472,6 +472,10 @@
         thisCart.dom.deliveryFee.innerHTML = settings.cart.defaultDeliveryFee;
 
       }
+
+      for(let selector of thisCart.dom.totalPrice){
+        selector.innerHTML=thisCart.totalPrice;
+      }
       console.log('totalPrice', thisCart.totalPrice);
       console.log('totalNumber', thisCart.totalNumber);
       console.log('subTotalPrice', thisCart.subTotalPrice);
@@ -480,6 +484,18 @@
       thisCart.dom.subTotalPrice.innerHTML = thisCart.subTotalPrice;
       thisCart.dom.totalPrice.innerHTML = thisCart.subTotalPrice + thisCart.deliveryFee;
       thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
+
+    }
+
+    remove(CartProduct) {
+
+      const thisCart = this;
+      const indexOfProduct = thisCart.products.indexOf(CartProduct);
+      thisCart.products.splice(indexOfProduct, 1);
+
+      CartProduct.dom.wrapper.remove();
+
+      thisCart.update();
 
     }
 
@@ -525,7 +541,7 @@
       });
     }
 
-    remove () {
+    remove() {
       const thisCartProduct = this;
 
       const event = new CustomEvent('remove', {
@@ -538,7 +554,7 @@
       thisCartProduct.dom.wrapper.dispatchEvent(event);
     }
 
-    initActions () {
+    initActions() {
       const thisCartProduct = this;
 
       thisCartProduct.dom.edit.addEventListener('click', function (event) {
