@@ -494,6 +494,7 @@
       thisCartProduct.getElements(element);
       console.log('thisCartProduct', thisCartProduct);
       thisCartProduct.initAmountWidget();
+      thisCartProduct.initActions();
     }
 
     getElements(element) {
@@ -530,6 +531,10 @@
       });
 
       thisCartProduct.dom.wrapper.dispatchEvent(event);
+    }
+
+    initActions () {
+
     }
 
   }
