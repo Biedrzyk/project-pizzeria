@@ -449,8 +449,8 @@
 
       const payload = {
 
-        address: thisCart.address,
-        phone: thisCart.phone,
+        address: thisCart.dom.address.value,
+        phone: thisCart.dom.phone.value,
         totalPrice: thisCart.totalPrice,
         subTotalPrice: thisCart.subTotalPrice,
         totalNumber: thisCart.totalNumber,
