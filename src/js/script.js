@@ -440,6 +440,10 @@
       });
     }
 
+    sendOrder() {
+      
+    }
+
     add(menuProduct) {
       const thisCart = this;
 
