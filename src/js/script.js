@@ -479,8 +479,8 @@
 
       }
 
-      for(let selector of thisCart.dom.totalPrice){
-        selector.innerHTML=thisCart.totalPrice;
+      for (let selector of thisCart.dom.totalPrice) {
+        selector.innerHTML = thisCart.totalPrice;
       }
       console.log('totalPrice', thisCart.totalPrice);
       console.log('totalNumber', thisCart.totalNumber);
@@ -593,19 +593,19 @@
       thisApp.data = {};
       const url = settings.db.url + '/' + settings.db.products;
       fetch(url)
-      .then(function(rawResponse){
-        return rawResponse.json();
-      })
-      .then(function(parsedResponse) {
-        console.log('parsedResponse', parsedResponse);
+        .then(function (rawResponse) {
+          return rawResponse.json();
+        })
+        .then(function (parsedResponse) {
+          console.log('parsedResponse', parsedResponse);
 
-        /* save parsedRersponse as thisApp.data.products */
-      thisApp.data.products = parsedResponse;
-        /* execute initMenu method */
-        thisApp.initMenu();
+          /* save parsedRersponse as thisApp.data.products */
+          thisApp.data.products = parsedResponse;
+          /* execute initMenu method */
+          thisApp.initMenu();
 
-      });
-      console.log('thisApp.data', JSON.stringify(thisApp.data)); 
+        });
+      console.log('thisApp.data', JSON.stringify(thisApp.data));
 
     },
 
