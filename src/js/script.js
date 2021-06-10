@@ -600,7 +600,7 @@
         console.log('parsedResponse', parsedResponse);
 
         /* save parsedRersponse as thisApp.data.products */
-      const parsedResponse = thisApp.data.products;
+      thisApp.data.products = parsedResponse;
         /* execute initMenu method */
         thisApp.initMenu();
 
