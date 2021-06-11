@@ -352,12 +352,13 @@
 
       const newValue = parseInt(value);
 
-      thisWidget.input.value = thisWidget.value;
+      
       /* TODO: Add validation */
-      if (thisWidget.value !== newValue && !isNaN(newValue) && newValue >= (settings.amountWidget.defaultMin - 1) && newValue <= (settings.amountWidget.defaultMax + 1)) {
-        thisWidget.announce();
+      if (thisWidget.value !== newValue && !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax) {
         thisWidget.value = newValue;
       }
+      thisWidget.input.value = thisWidget.value;
+      thisWidget.announce();
     }
 
     initActions() {
