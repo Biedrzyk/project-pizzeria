@@ -557,7 +557,7 @@
       thisCartProduct.params = menuProduct.params;
       thisCartProduct.amount = menuProduct.amount;
       thisCartProduct.priceSingle = menuProduct.priceSingle;
-      thisCartProduct.amountWidget = menuProduct.amountWidget;
+      /*thisCartProduct.amountWidget = menuProduct.amountWidget;*/
 
       thisCartProduct.getElements(element);
       console.log('thisCartProduct', thisCartProduct);
@@ -621,9 +621,9 @@
 
         id: thisCartProduct.id,
         name: thisCartProduct.name,
-        amount: thisCartProduct.amountWidget.value,
+        amount: thisCartProduct.amount,
         priceSingle: thisCartProduct.priceSingle,
-        price: thisCartProduct.amountWidget.value * thisCartProduct.priceSingle,
+        price: thisCartProduct.price,
         params: thisCartProduct.params,
       };
       console.log('payloadSummary', payloadSummary);
