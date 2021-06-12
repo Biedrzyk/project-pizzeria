@@ -259,9 +259,11 @@
           }
         }
       }
+      thisProduct.priceSingle = price;
+
       price *= thisProduct.amountWidget.value;
       // update calculated price in the HTML
-      thisProduct.priceSingle = thisProduct.priceElem.innerHTML;
+      
       thisProduct.priceElem.innerHTML = price;
     }
 
