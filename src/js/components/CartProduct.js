@@ -1,4 +1,4 @@
-import { select } from './settings.js';
+import { select } from '../settings.js';
 import AmountWidget from './AmountWidget.js';
 
 class CartProduct {
@@ -67,7 +67,7 @@ class CartProduct {
     });
   }
 
-  /*getData() {
+  getData() {
     const thisCartProduct = this;
 
     const payloadSummary = {
@@ -82,7 +82,7 @@ class CartProduct {
     console.log('payloadSummary', payloadSummary);
 
     return payloadSummary;
-  }*/
+  }
 }
 
 export default CartProduct;

@@ -49,7 +49,7 @@ const app = {
     console.log('templates:', templates);
 
     thisApp.initData();
-    thisApp.initCart();
+    /*thisApp.initCart();*/
   },
 
   initCart: function () {
@@ -68,3 +68,4 @@ const app = {
 };
 
 app.init();
+app.initCart();
