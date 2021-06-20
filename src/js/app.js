@@ -10,10 +10,17 @@ const app = {
     
     thisApp.navLinks = document.querySelectorAll(select.nav.links);  // znalezienie wszystkich linków
     
-    const idFromHash = window.location.hash;
-    console.log('idFromHash', idFromHash);
-      
-    thisApp.activatePage(thisApp.pages[0].id); // wydobywamy pierwszą z podstron razem z jej id
+    const idFromHash = window.location.hash.replace('#/', '');
+
+    let pageMatchingHash = thisApp.pages[0].id; // jeśli hash podstrony nie pasuje do żadnej z nich załaduj pierwszą
+
+    for (let page of thisApp.pages) {
+      if(page.id == idFromHash) {
+        pageMatchingHash = page.id;
+        break; // pozostałe strony nie zostaną sprawdzone
+      }
+    }
+    thisApp.activatePage(idFromHash); // wydobywamy pierwszą z podstron razem z jej id (thisApp.pages[0].id)
 
     for(let link of thisApp.navLinks) {
       link.addEventListener('click', function(event) {  // po kliknięciu odpala się funkcja a atrybutem event
