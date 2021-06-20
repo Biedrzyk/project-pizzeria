@@ -6,9 +6,34 @@ const app = {
 
   initPages: function () {
     const thisApp = this;
-    thisApp.pages = document.querySelector(select.containerOf.pages).children;  // znalezienie kontenera wszystkich stron - .children obsluguje wszystkie podstrony w thissApp pages znajdąsięwszystkie dzieci kontenera stron
-
+    thisApp.pages = document.querySelector(select.containerOf.pages).children;  // znalezienie kontenera wszystkich stron - .children obsluguje wszystkie podstrony w thissApp pages znajdą się wszystkie dzieci kontenera stron
+    
+    thisApp.navLinks = document.querySelectorAll(select.nav.links);  // znalezienie wszystkich linków
+    
+    const idFromHash = window.location.hash;
+    console.log('idFromHash', idFromHash);
+      
     thisApp.activatePage(thisApp.pages[0].id); // wydobywamy pierwszą z podstron razem z jej id
+
+    for(let link of thisApp.navLinks) {
+      link.addEventListener('click', function(event) {  // po kliknięciu odpala się funkcja a atrybutem event
+        const clickedElement = this;
+        event.preventDefault();
+
+        /* get page id from href attribute */
+
+        const id = clickedElement.getAttribute('href').replace('#', '');  // replace pierwszy argument co zmieniamy, drugi na co zmieniamy // zapisujemy atrybut href klikniętego elementu
+
+        /* run thisApp.activatePage with that id */
+
+        thisApp.activatePage(id);
+
+        /* change URL hash */ // hash w adresie strony
+
+        window.location.hash = '#/' + id;  // przesunięcie strony jest treakcja na tę właściwość, nie kliknięcie - sam / po hash-u wyłącza to działanie domyślne
+      });
+    }
+
   },
 
   activatePage: function (pageId) {
@@ -18,9 +43,16 @@ const app = {
     for(let page of thisApp.pages) {
       page.classList.toggle(classNames.pages.active, page.id == pageId);  // toggle nadaje klasęjako pierwszy argument tj. (classNames.pages.active) jeżeli jej nie było, w przeciwnym wypadku odbiera ją
     } // pętla idzie po wszystkich stronach z kontenera thisApp.pages     // drugi warunek po przecinku kontroluje czy dana klasa będzie nadana lub nie
-
     
     /* add class "active" to the matching links, remove from non-matching */
+
+    for(let link of thisApp.navLinks) {
+      link.classList.toggle(
+        classNames.nav.active, 
+        link.getAttribute('href') == '#' + pageId // czy href jest równy # pageId podany w metodzie activatePage
+      );  // toggle nadaje klasęjako pierwszy argument tj. (classNames.pages.active) jeżeli jej nie było, w przeciwnym wypadku odbiera ją
+    } // pętla idzie po wszystkich stronach z kontenera thisApp.pages     // drugi warunek po przecinku kontroluje czy dana klasa będzie nadana lub nie
+
   },
 
   initMenu: function () {
