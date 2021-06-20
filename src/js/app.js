@@ -4,11 +4,11 @@ import Cart from './components/Cart.js';
 
 const app = {
 
-  initPages: function () {
+  initPages: function () {  // uruchamia się podczas odświeżania strony
     const thisApp = this;
-    thisApp.pages = document.querySelector(select.containerOf.pages).children;  // znalezienie kontenera wszystkich stron - .children obsluguje wszystkie podstrony w thissApp pages znajdą się wszystkie dzieci kontenera stron
+    thisApp.pages = document.querySelector(select.containerOf.pages).children;  // znalezienie kontenera wszystkich podstron - .children obsluguje wszystkie podstrony w thissApp pages znajdą się wszystkie dzieci kontenera stron
     
-    thisApp.navLinks = document.querySelectorAll(select.nav.links);  // znalezienie wszystkich linków
+    thisApp.navLinks = document.querySelectorAll(select.nav.links);  // znalezienie wszystkich linków do podstron
     
     const idFromHash = window.location.hash.replace('#/', '');
 
@@ -20,7 +20,7 @@ const app = {
         break; // pozostałe strony nie zostaną sprawdzone
       }
     }
-    thisApp.activatePage(idFromHash); // wydobywamy pierwszą z podstron razem z jej id (thisApp.pages[0].id)
+    thisApp.activatePage(pageMatchingHash); // wydobywamy pierwszą z podstron razem z jej id (thisApp.pages[0].id)
 
     for(let link of thisApp.navLinks) {
       link.addEventListener('click', function(event) {  // po kliknięciu odpala się funkcja a atrybutem event
@@ -105,7 +105,7 @@ const app = {
     console.log('templates:', templates);
     thisApp.initPages();
     thisApp.initData();
-    thisApp.initCart();
+    /*thisApp.initCart();*/
   },
 
   initCart: function () {
