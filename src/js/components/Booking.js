@@ -1,5 +1,4 @@
-import { templates, select, settings, classNames } from '../settings.js';
-import utils from '../utils.js';
+import { templates, select} from '../settings.js';
 import AmountWidget from './AmountWidget.js';
 
 class Booking {
@@ -13,7 +12,7 @@ class Booking {
   render (element) {
     const thisBooking = this;
 
-    const generateHTML = templates.bookingWidget;
+    const generateHTML = templates.bookingWidget();
     
     thisBooking.dom = {};
     thisBooking.dom.wrapper = element;
@@ -24,10 +23,10 @@ class Booking {
 
   initWidgets () {
     const thisBooking = this;
+
     thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
   }
-
 }
 
 export default Booking;
