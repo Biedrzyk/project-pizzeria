@@ -117,6 +117,8 @@ class Cart {
     for (let product of thisCart.products) {
       thisCart.totalNumber += product.amount;
       thisCart.subTotalPrice += product.price;
+
+      console.log('product amount', product.amount);
     }
 
     if (thisCart.totalNumber == 0) {
