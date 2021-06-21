@@ -10,8 +10,6 @@ class Cart {
 
     thisCart.getElements(element);
 
-    console.log('new Cart', thisCart);
-
     thisCart.initActions();
   }
 
@@ -97,10 +95,7 @@ class Cart {
 
     thisCart.dom.productList.appendChild(generatedDOM);
 
-    console.log('adding product', menuProduct);
-
     thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
-    console.log('thisCart.products', thisCart.products);
 
     thisCart.update();
 
@@ -121,7 +116,7 @@ class Cart {
       console.log('product amount', product.amount);
     }
 
-    if (thisCart.totalNumber == 0) {
+    if (thisCart.totalNumber === 0) {
       thisCart.totalPrice = 0;
       thisCart.deliveryFee = 0;
 
@@ -149,10 +144,11 @@ class Cart {
   remove(CartProduct) {
 
     const thisCart = this;
-    const indexOfProduct = thisCart.products.indexOf(CartProduct);
-    thisCart.products.splice(indexOfProduct, 1);
 
-    CartProduct.dom.wrapper.remove();
+    const indexOfProduct = thisCart.products.indexOf(CartProduct); // usunięcie HTML-a
+    thisCart.products.splice(indexOfProduct, 1); // usunięcie z tablicy
+
+    CartProduct.dom.wrapper.remove(); // wywołanie update żeby przeliczyć sumy
 
     thisCart.update();
 

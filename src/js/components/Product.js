@@ -17,7 +17,6 @@ class Product {
     thisProduct.initAmountWidget();
     thisProduct.processOrder();
 
-    console.log('new Product', thisProduct);
   }
 
   initAmountWidget() {
@@ -185,7 +184,7 @@ class Product {
     const event = new CustomEvent('add-to-cart', {
       bubbles: true,
       detail: {
-        product: thisProduct,
+        product: thisProduct.prepareCartProduct(),
       },
     });
 
