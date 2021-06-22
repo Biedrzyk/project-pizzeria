@@ -31,28 +31,37 @@ class AmountWidget extends BaseWidget{  // klasa AmountWidget jest rozszerzeniem
 
     const thisWidget = this;
 
-    const newValue = parseInt(value);
+    const newValue = thisWidget.parseValue(value); // parseValue jest metodą thisWidget
 
 
-    /* TODO: Add validation */
-    if (thisWidget.value !== newValue && !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax) {
+    /* TODO: Add validation */  // != różni się
+    if (newValue != thisWidget.value && !isNaN(newValue) && thisWidget.isValid(newValue)) {
       thisWidget.value = newValue;
     }
-    thisWidget.dom.input.value = thisWidget.value;
+    thisWidget.renderValue();
     thisWidget.announce();
   }
 
-  parseValue() {
+  parseValue(value) {
 
-
+    return parseInt(value);
   }
 
 
-  isValid() {
+  isValid(value) {    // będzie zwracaćprawdęlub fałsz w zależności od kryteriów które ustalimy dla widgetów
 
-
+    return !isNaN(value)  // jeśli value jest tekstem to isNaN jest prawdziwa
+    && value >= settings.amountWidget.defaultMin 
+    && value <= settings.amountWidget.defaultMax;
   }
-  
+
+  renderValue() { // bieżąca wartość widgetu będzie wyświetlona na stronie
+    const thisWidget = this;
+
+    thisWidget.dom.input.value = thisWidget.value;
+  }
+
+
   initActions() {
 
     const thisWidget = this;
