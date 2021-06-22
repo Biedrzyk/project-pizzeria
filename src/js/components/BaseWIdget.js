@@ -29,7 +29,7 @@ class BaseWidget {  // ma byćsamodzielna więc będzie korzystaćtylko z metod 
     thisWidget.announce();
   }
 
-  setValue(value) {
+  setValue(value) {   // zawsze ważniejsze jest klasa pochodna - to stamtąd jest uruchamiana metoda jeśli są takie same nazwy, jeśli chcemy ją zatrzymaćwpisujemy pustą metodę
     const thisWidget = this;
 
     thisWidget.value = value; // zadziała setter jeśli wartość jest poprawna, takie zabezpieczenie
