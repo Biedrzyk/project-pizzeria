@@ -5,7 +5,7 @@ class BaseWidget {  // ma byćsamodzielna więc będzie korzystaćtylko z metod 
     thisWidget.dom = {};
     thisWidget.dom.wrapper = wrapperElement;
 
-    thisWidget.value = initialValue; // zmieniamy na value żeby odpalił się poprawnie setter set value
+    thisWidget.correctValue = initialValue; // zmieniamy na value żeby odpalił się poprawnie setter set value
   }
 
   get value() {   // getter sprawdza jaka jest wartość, metoda wykonywana przy każdej próbie odczytania wartości właściwości value
@@ -27,6 +27,12 @@ class BaseWidget {  // ma byćsamodzielna więc będzie korzystaćtylko z metod 
     }
     thisWidget.renderValue();
     thisWidget.announce();
+  }
+
+  setValue(value) {
+    const thisWidget = this;
+
+    thisWidget.value = value; // zadziała setter jeśli wartość jest poprawna, takie zabezpieczenie
   }
 
   parseValue(value) { // skasujemy parseValue w klasie AmountWidget bo tu jest identyczna

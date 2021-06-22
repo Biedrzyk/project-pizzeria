@@ -8,8 +8,8 @@ class AmountWidget extends BaseWidget {  // klasa AmountWidget jest rozszerzenie
 
     const thisWidget = this;
 
-    console.log('AmountWidget: ', thisWidget);
-    console.log('constructor arguments: ', element);
+    //console.log('AmountWidget: ', thisWidget);
+    //console.log('constructor arguments: ', element);
 
 
     thisWidget.getElements(element);
