@@ -1,4 +1,4 @@
-import { templates, select, settings} from '../settings.js';
+import { templates, select, /*settings*/} from '../settings.js';
 import AmountWidget from './AmountWidget.js';
 import DatePicker from './DatePicker.js';
 import HourPicker from './HourPicker.js';
@@ -12,7 +12,7 @@ class Booking {
     thisBooking.getData();
   }
 
-  getData() {
+  /*getData() {
     const thisBooking = this;
 
     const params = {
@@ -28,7 +28,7 @@ class Booking {
       ]
     };
 
-    console.log('getData params', params);
+    //console.log('getData params', params);
 
     const urls = {
       bookings:      settings.db.url + '/' + settings.db.booking 
@@ -39,7 +39,7 @@ class Booking {
                                      + '?' + params.eventsRepeat.join('&'), // zwróci listę wydarzeń cyklicznych
     };
     console.log('getData urls', urls);
-  }
+  }*/
 
   render (element) {
     const thisBooking = this;

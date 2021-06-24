@@ -22,7 +22,7 @@ class BaseWidget {  // ma byćsamodzielna więc będzie korzystaćtylko z metod 
 
 
     /* TODO: Add validation */  // != różni się
-    if (newValue != thisWidget.correctValue && !isNaN(newValue) && thisWidget.isValid(newValue)) {
+    if (newValue != thisWidget.correctValue && thisWidget.isValid(newValue)) {
       thisWidget.correctValue = newValue;
     }
     thisWidget.renderValue();
