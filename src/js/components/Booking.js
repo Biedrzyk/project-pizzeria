@@ -40,7 +40,7 @@ class Booking {
     //console.log('getData params', params);
 
     const urls = {
-      bookings:      settings.db.url + '/' + settings.db.booking 
+      booking:       settings.db.url + '/' + settings.db.booking 
                                      + '?' + params.booking.join('&'), // adres endpointu zwracający listę rezerwacji
       eventsCurrent: settings.db.url + '/' + settings.db.event   
                                      + '?' + params.eventsCurrent.join('&'),  // zwórci listę wydarzeń jednorazowych
@@ -49,7 +49,7 @@ class Booking {
     };
     //console.log('getData urls', urls);
 
-    fetch(urls.bookings)
+    fetch(urls.booking)
       .then(function(bookingsResponse) {
         return bookingsResponse.json();
       })
