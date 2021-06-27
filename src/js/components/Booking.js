@@ -34,14 +34,14 @@ class Booking {
       eventsRepeat: [
         settings.db.repeatParam,
         endDateParam,
-      ]
+      ],
     };
 
     //console.log('getData params', params);
 
     const urls = {
       booking: settings.db.url + '/' + settings.db.booking,
-      //+ '?' + params.booking.join('&'), // adres endpointu zwracający listę rezerwacji
+      // + '?' + params.booking.join('&'), // adres endpointu zwracający listę rezerwacji
       eventsCurrent: settings.db.url + '/' + settings.db.event
         + '?' + params.eventsCurrent.join('&'),  // zwórci listę wydarzeń jednorazowych
       eventsRepeat: settings.db.url + '/' + settings.db.event
@@ -52,10 +52,9 @@ class Booking {
     Promise.all([
       fetch(urls.booking),
       fetch(urls.eventsCurrent),
-      console.log('URLS', urls.booking),
       fetch(urls.eventsRepeat),
     ])
-      .then(function (allResponses) {
+      .then(function(allResponses){
         const bookingsResponse = allResponses[0];
         const eventsCurrentResponse = allResponses[1];
         const eventsRepeatResponse = allResponses[2];
@@ -65,11 +64,14 @@ class Booking {
           eventsRepeatResponse.json(),
         ]);
       })
-      .then(function ([bookings, eventsCurrent, eventsRepeat]) {
+      .then(function([bookings, eventsCurrent, eventsRepeat]) {
         console.log('bookings', bookings);
         console.log('eventsCurrent', eventsCurrent);
         console.log('eventsRepeat', eventsRepeat);
       });
+    console.log('URLS b', urls.booking);
+    console.log('URLS ec', urls.eventsCurrent);
+    console.log('URLS er', urls.eventsRepeat);
   }
 
   render(element) {

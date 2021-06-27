@@ -119,7 +119,7 @@ export const settings = {
     products: 'products',
     orders: 'orders',
     booking: 'bookings',
-    event: 'event',
+    event: 'events',
     dateStartParamKey: 'date_gte',
     dateEndParamKey: 'date_lte',
     notRepeatParam: 'repeat=false',
