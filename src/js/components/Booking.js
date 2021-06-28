@@ -65,14 +65,19 @@ class Booking {
         ]);
       })
       .then(function([bookings, eventsCurrent, eventsRepeat]) {
-        console.log('bookings', bookings);
-        console.log('eventsCurrent', eventsCurrent);
-        console.log('eventsRepeat', eventsRepeat);
+        //console.log('bookings', bookings);
+        //console.log('eventsCurrent', eventsCurrent);
+        //console.log('eventsRepeat', eventsRepeat);
+        thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
       });
-    console.log('URLS b', urls.booking);
-    console.log('URLS ec', urls.eventsCurrent);
-    console.log('URLS er', urls.eventsRepeat);
   }
+
+  /*parseData(bookings, eventsCurrent, eventsRepeat) {
+    const thisBooking = this;
+  
+  
+
+  }*/
 
   render(element) {
     const thisBooking = this;
