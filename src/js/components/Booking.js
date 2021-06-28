@@ -72,12 +72,20 @@ class Booking {
       });
   }
 
-  /*parseData(bookings, eventsCurrent, eventsRepeat) {
+  parseData(bookings, eventsCurrent, eventsRepeat) {
     const thisBooking = this;
   
-  
+    thisBooking.booked = {};
 
-  }*/
+    for(let item of eventsCurrent) {
+      thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
+    }
+
+  }
+
+  makeBooked(date, hour, duration, table) {
+    const thisBooking = this;
+  }
 
   render(element) {
     const thisBooking = this;
