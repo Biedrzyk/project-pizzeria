@@ -169,7 +169,6 @@ class Booking {
     thisBooking.dom.datePicker = element.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = element.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = element.querySelectorAll(select.booking.tables);
-    thisBooking.dom.floorPlan = thisBooking.dom.wrapper.querySelector(select.booking.floorPlan);
   }
 
   initWidgets() {
@@ -184,9 +183,6 @@ class Booking {
       thisBooking.updateDOM();
     });
 
-    thisBooking.dom.floorPlan.addEventListener('click', function (event) {
-      thisBooking.initTables(event);
-    });
   }
 
   initTables() {
@@ -216,8 +212,8 @@ class Booking {
 
     const clickedTables = document.querySelectorAll('.selected');
 
-    for( let selected of clickedTables) {
-      selected.classList.remove(classNames.booking.tableSelected);
+    for( let clicked of clickedTables) {
+      clicked.classList.remove(classNames.booking.tableSelected);
     }
     delete thisBooking.clickedTable;
   }
