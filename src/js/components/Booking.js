@@ -183,12 +183,43 @@ class Booking {
     thisBooking.dom.wrapper.addEventListener('updated', function() {
       thisBooking.updateDOM();
     });
+
+    thisBooking.dom.floorPlan.addEventListener('click', function (event) {
+      thisBooking.initTables(event);
+    });
   }
 
   initTables() {
     const thisBooking = this;
 
+    for (let table of thisBooking.dom.tables) {
+      table.addEventListener('click', function(event){
+        event.preventDefault();
+        if(table.classList.contains('booked')) {
+          alert('choose a new table, this one is already booked');
+        } else {
+          const tableNumber = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
+          thisBooking.clickedTable === tableNumber;
+          if (thisBooking.clickedTable) {
+            thisBooking.removeSelected();
+          } else {
+            table.classList.add(classNames.booking.tableSelected);
+            thisBooking.clickedTable = tableNumber;
+          }
+        }
+      });
+    }
+  }
 
+  removeSelected() {
+    const thisBooking = this;
+
+    const clickedTables = document.querySelectorAll('.selected');
+
+    for( let selected of clickedTables) {
+      selected.classList.remove(classNames.booking.tableSelected);
+    }
+    delete thisBooking.clickedTable;
   }
 }
 
