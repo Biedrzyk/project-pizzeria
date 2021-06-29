@@ -1,4 +1,4 @@
-class BaseWidget {  // ma byćsamodzielna więc będzie korzystaćtylko z metod w niej zawartych
+class BaseWidget {  // ma być samodzielna więc będzie korzystaćtylko z metod w niej zawartych
   constructor(wrapperElement, initialValue){
     const thisWidget = this;
     

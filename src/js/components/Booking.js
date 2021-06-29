@@ -40,14 +40,14 @@ class Booking {
     //console.log('getData params', params);
 
     const urls = {
-      booking: settings.db.url + '/' + settings.db.booking,
-      // + '?' + params.booking.join('&'), // adres endpointu zwracający listę rezerwacji
+      booking: settings.db.url + '/' + settings.db.booking
+      + '?' + params.booking.join('&'), // adres endpointu zwracający listę rezerwacji
       eventsCurrent: settings.db.url + '/' + settings.db.event
         + '?' + params.eventsCurrent.join('&'),  // zwórci listę wydarzeń jednorazowych
       eventsRepeat: settings.db.url + '/' + settings.db.event
         + '?' + params.eventsRepeat.join('&'), // zwróci listę wydarzeń cyklicznych
     };
-    //console.log('getData urls', urls);
+    console.log('getData urls', urls);
 
     Promise.all([
       fetch(urls.booking),
