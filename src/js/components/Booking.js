@@ -42,7 +42,7 @@ class Booking {
 
     const urls = {
       booking: settings.db.url + '/' + settings.db.booking
-      + '?' + params.booking.join('&'), // adres endpointu zwracający listę rezerwacji
+        + '?' + params.booking.join('&'), // adres endpointu zwracający listę rezerwacji
       eventsCurrent: settings.db.url + '/' + settings.db.event
         + '?' + params.eventsCurrent.join('&'),  // zwórci listę wydarzeń jednorazowych
       eventsRepeat: settings.db.url + '/' + settings.db.event
@@ -55,7 +55,7 @@ class Booking {
       fetch(urls.eventsCurrent),
       fetch(urls.eventsRepeat),
     ])
-      .then(function(allResponses){
+      .then(function (allResponses) {
         const bookingsResponse = allResponses[0];
         const eventsCurrentResponse = allResponses[1];
         const eventsRepeatResponse = allResponses[2];
@@ -65,7 +65,7 @@ class Booking {
           eventsRepeatResponse.json(),
         ]);
       })
-      .then(function([bookings, eventsCurrent, eventsRepeat]) {
+      .then(function ([bookings, eventsCurrent, eventsRepeat]) {
         //console.log('bookings', bookings);
         //console.log('eventsCurrent', eventsCurrent);
         //console.log('eventsRepeat', eventsRepeat);
@@ -75,23 +75,23 @@ class Booking {
 
   parseData(bookings, eventsCurrent, eventsRepeat) {
     const thisBooking = this;
-  
+
     thisBooking.booked = {};
 
-    for(let item of bookings) {
+    for (let item of bookings) {
       thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
     }
 
-    for(let item of eventsCurrent) {
+    for (let item of eventsCurrent) {
       thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
     }
 
     const minDate = thisBooking.datePicker.minDate;
     const maxDate = thisBooking.datePicker.maxDate;
 
-    for(let item of eventsRepeat) {
-      if(item.repeat == 'daily') {
-        for(let loopDate = minDate; loopDate <= maxDate; loopDate = utils.addDays(loopDate, 1)){
+    for (let item of eventsRepeat) {
+      if (item.repeat == 'daily') {
+        for (let loopDate = minDate; loopDate <= maxDate; loopDate = utils.addDays(loopDate, 1)) {
           thisBooking.makeBooked(utils.dateToStr(loopDate), item.hour, item.duration, item.table);
         }
       }
@@ -103,7 +103,7 @@ class Booking {
   makeBooked(date, hour, duration, table) {
     const thisBooking = this;
 
-    if(typeof thisBooking.booked[date] == 'undefined'){
+    if (typeof thisBooking.booked[date] == 'undefined') {
       thisBooking.booked[date] = {};
     }
 
@@ -111,7 +111,7 @@ class Booking {
 
     for (let hourBlock = startHour; hourBlock < startHour + duration; hourBlock += 0.5) {
       //console.log('loop', hourBlock);
-      if(typeof thisBooking.booked[date][hourBlock] == 'undefined'){
+      if (typeof thisBooking.booked[date][hourBlock] == 'undefined') {
         thisBooking.booked[date][hourBlock] = [];
       }
       thisBooking.booked[date][hourBlock].push(table);
@@ -165,7 +165,7 @@ class Booking {
     thisBooking.dom.wrapper.innerHTML = generateHTML;
     thisBooking.dom.peopleAmount = element.querySelector(select.booking.peopleAmount);
     thisBooking.dom.hoursAmount = element.querySelector(select.booking.hoursAmount);
-    
+
     thisBooking.dom.datePicker = element.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = element.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = element.querySelectorAll(select.booking.tables);
@@ -173,7 +173,7 @@ class Booking {
     thisBooking.dom.address = element.querySelector(select.cart.address);
     thisBooking.dom.phone = element.querySelector(select.cart.phone);
     thisBooking.dom.starters = element.querySelectorAll(select.booking.starters);
-  
+
   }
 
   initWidgets() {
@@ -184,7 +184,7 @@ class Booking {
     thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
     thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
 
-    thisBooking.dom.wrapper.addEventListener('updated', function() {
+    thisBooking.dom.wrapper.addEventListener('updated', function () {
       thisBooking.updateDOM();
     });
 
@@ -199,9 +199,9 @@ class Booking {
     const thisBooking = this;
 
     for (let table of thisBooking.dom.tables) {
-      table.addEventListener('click', function(event){
+      table.addEventListener('click', function (event) {
         event.preventDefault();
-        if(table.classList.contains('booked')) {
+        if (table.classList.contains('booked')) {
           alert('choose a new table, this one is already booked');
         } else {
           const tableNumber = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
@@ -222,7 +222,7 @@ class Booking {
 
     const clickedTables = document.querySelectorAll('.selected');
 
-    for( let clicked of clickedTables) {
+    for (let clicked of clickedTables) {
       clicked.classList.remove(classNames.booking.tableSelected);
     }
     delete thisBooking.clickedTable;
@@ -242,13 +242,29 @@ class Booking {
       starters: [],
       phone: thisBooking.dom.phone.value,
       address: thisBooking.dom.address.value,
-    }
+    };
 
-    for(let starter of thisBooking.dom.starters) {    // opcje starterów - woda i chleb
-      if(starter.checked === true) {
+    for (let starter of thisBooking.dom.starters) {    // opcje starterów - woda i chleb
+      if (starter.checked === true) {
         finalBooking.starters.push(starter.value);    // dopisz jeśli zaznaczono
       }
     }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(finalBooking),
+    };
+
+    fetch(url, options)
+      .then(function (response) {
+        return response.json();
+      }).then(function (parsedResponse) {
+        console.log('parsedResponse', parsedResponse);
+      });
+
 
   }
 }
