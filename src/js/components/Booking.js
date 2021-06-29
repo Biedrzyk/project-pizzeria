@@ -234,16 +234,21 @@ class Booking {
     const url = settings.db.url + '/' + settings.db.booking;
 
     const finalBooking = {
-      date:
-      hour:
-      table:
-      duration:
-      ppl:
-      starters:
-      phone:
-      address:
+      date: thisBooking.datePicker.value, // pobieranie wartości dla zamówienia
+      hour: thisBooking.hourPicker.value,
+      table: thisBooking.selectedTable,
+      duration: parseInt(thisBooking.peopleAmount.value), // zamiana na liczbę
+      ppl: parseInt(thisBooking.hoursAmount.value),
+      starters: [],
+      phone: thisBooking.dom.phone.value,
+      address: thisBooking.dom.address.value,
     }
 
+    for(let starter of thisBooking.dom.starters) {    // opcje starterów - woda i chleb
+      if(starter.checked === true) {
+        finalBooking.starters.push(starter.value);    // dopisz jeśli zaznaczono
+      }
+    }
 
   }
 }
