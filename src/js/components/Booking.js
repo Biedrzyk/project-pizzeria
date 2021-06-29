@@ -217,6 +217,11 @@ class Booking {
     }
     delete thisBooking.clickedTable;
   }
+
+  sendBooking() {
+
+    
+  }
 }
 
 export default Booking;
