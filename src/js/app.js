@@ -1,30 +1,31 @@
-import {settings, select, templates, classNames} from './settings.js';
+import { settings, select, classNames } from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
+//import Home from './components/Home.js';
 
 const app = {
 
   initPages: function () {  // uruchamia się podczas odświeżania strony
     const thisApp = this;
     thisApp.pages = document.querySelector(select.containerOf.pages).children;  // znalezienie kontenera wszystkich podstron - .children obsluguje wszystkie podstrony w thissApp pages znajdą się wszystkie dzieci kontenera stron
-    
+
     thisApp.navLinks = document.querySelectorAll(select.nav.links);  // znalezienie wszystkich linków do podstron
-    
+
     const idFromHash = window.location.hash.replace('#/', '');
 
     let pageMatchingHash = thisApp.pages[0].id; // jeśli hash podstrony nie pasuje do żadnej z nich załaduj pierwszą
 
     for (let page of thisApp.pages) {
-      if(page.id == idFromHash) {
+      if (page.id == idFromHash) {
         pageMatchingHash = page.id;
         break; // pozostałe strony nie zostaną sprawdzone
       }
     }
     thisApp.activatePage(pageMatchingHash); // wydobywamy pierwszą z podstron razem z jej id (thisApp.pages[0].id)
 
-    for(let link of thisApp.navLinks) {
-      link.addEventListener('click', function(event) {  // po kliknięciu odpala się funkcja a atrybutem event
+    for (let link of thisApp.navLinks) {
+      link.addEventListener('click', function (event) {  // po kliknięciu odpala się funkcja a atrybutem event
         const clickedElement = this;
         event.preventDefault();
 
@@ -48,15 +49,15 @@ const app = {
     const thisApp = this;
 
     /* add class "active" to the matching pages, remove from non-matching */
-    for(let page of thisApp.pages) {
+    for (let page of thisApp.pages) {
       page.classList.toggle(classNames.pages.active, page.id == pageId);  // toggle nadaje klasęjako pierwszy argument tj. (classNames.pages.active) jeżeli jej nie było, w przeciwnym wypadku odbiera ją
     } // pętla idzie po wszystkich stronach z kontenera thisApp.pages     // drugi warunek po przecinku kontroluje czy dana klasa będzie nadana lub nie
-    
+
     /* add class "active" to the matching links, remove from non-matching */
 
-    for(let link of thisApp.navLinks) {
+    for (let link of thisApp.navLinks) {
       link.classList.toggle(
-        classNames.nav.active, 
+        classNames.nav.active,
         link.getAttribute('href') == '#' + pageId // czy href jest równy # pageId podany w metodzie activatePage
       );  // toggle nadaje klasęjako pierwszy argument tj. (classNames.pages.active) jeżeli jej nie było, w przeciwnym wypadku odbiera ją
     } // pętla idzie po wszystkich stronach z kontenera thisApp.pages     // drugi warunek po przecinku kontroluje czy dana klasa będzie nadana lub nie
@@ -72,6 +73,22 @@ const app = {
     for (let productData in thisApp.data.products) {
       new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
     }
+  },
+
+  /*initHome: function () {
+    const thisApp = this;
+
+    const homeSection = document.querySelector(select.containerOf.home);
+    thisApp.home = new Home(homeSection);
+  },*/
+
+  initBooking: function () {
+    const thisApp = this;
+
+    const bookingElement = document.querySelector(select.containerOf.booking);
+
+    thisApp.booking = new Booking(bookingElement);
+
   },
 
   initData: function () {
@@ -99,14 +116,9 @@ const app = {
   init: function () {
 
     const thisApp = this;
-    console.log('*** App starting ***');
-    console.log('thisApp:', thisApp);
-    console.log('classNames:', classNames);
-    console.log('settings:', settings);
-    console.log('templates:', templates);
+    //thisApp.initHome();
     thisApp.initPages();
     thisApp.initData();
-    /*thisApp.initCart();*/
     thisApp.initBooking();
   },
 
@@ -118,19 +130,9 @@ const app = {
 
     thisApp.productList = document.querySelector(select.containerOf.menu);
 
-    thisApp.productList.addEventListener('add-to-cart', function(event) {
+    thisApp.productList.addEventListener('add-to-cart', function (event) {
       app.cart.add(event.detail.product);
     });
-  },
-
-  initBooking: function() {
-    const thisApp = this;
-    
-    const bookingElement = document.querySelector(select.containerOf.booking);
-
-    thisApp.booking = new Booking(bookingElement);
-
-
   },
 
 };
