@@ -73,3 +73,25 @@
     margin-left: 150px;
     margin-right: 150px;
   }
+
+  /* Carousel */
+
+  .carousel {
+      height: 250px;
+      margin: 15px;
+  }
+
+  .carousel-image img {
+      width: 275px;
+      height: 275px;
+      object-fit: cover;
+      margin-right: 30px;
+      border-radius: 5px;
+  }
+
+  .carousel-element {
+      display: flex;
+      height: 280px;
+      margin-top: 25px;
+      width: 100%;
+  }
