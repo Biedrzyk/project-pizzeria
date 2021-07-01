@@ -5,3 +5,27 @@
     border-bottom: 2px solid lighten($color-dark, 55%);
     border-radius: $radius;
 }
+
+.order-online {
+    width: 290px;
+    height: 115px;
+    flex: 45%;
+    background-image: url("./../../images/carousel/pizza-1.jpg");
+  }
+  
+  .book-table {
+    width: 290px;
+    height: 115px;
+    flex: 45%;
+    background-image: url("./../../images/carousel/pizza-2.jpg");
+  }
+
+  .opening-hours {
+    background-color: $color-main;
+    flex: 100%;
+    height: 115px;
+  
+    h2, h3{
+      margin: 30px;
+    }
+  }
