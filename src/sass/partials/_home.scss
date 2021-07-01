@@ -1,6 +1,6 @@
 .home-container{
-    margin: ($base-size * 2.5) auto;
-    padding: ($base-size * 4) ($base-size * 2);
+    margin: ($base-size * 3.5) auto;
+    padding: ($base-size * 6) ($base-size * 4);
     background: $color-light;
     border-bottom: 2px solid lighten($color-dark, 55%);
     border-radius: $radius;
@@ -28,4 +28,48 @@
     h2, h3{
       margin: 30px;
     }
+  }
+
+  .order-online, .book-table, .opening-hours {
+  
+    color: $color-light;
+    margin-top: 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+  
+    h2 {
+      margin: 35px;
+    }
+  
+    a {
+      text-decoration: none;
+      color: $color-light;
+    }
+        
+    p {
+      font-family: $font-text;
+    }
+  }
+
+  .order-online:hover, .book-table:hover {
+    p {
+      visibility: visible;
+      transform: translateY(-20px);
+      transition: 0.5s linear;
+    }
+  
+    h2 {
+      transform: translateY(-15px);
+      transition: 0.5s linear;
+    }
+  }
+
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    color: $color-light;
+    font-family: $font-header;
+    margin-left: 150px;
+    margin-right: 150px;
   }
