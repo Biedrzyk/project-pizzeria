@@ -95,3 +95,15 @@
       margin-top: 25px;
       width: 100%;
   }
+
+  .carousel-text {
+      h4 {
+          margin-bottom: -20px;
+      }
+
+      p{
+          font-family: $font-text;
+          font-size: 18px;
+          font-weight: $font-light;
+      }
+  }
