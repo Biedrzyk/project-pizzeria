@@ -120,9 +120,43 @@
       .box {
         position: relative;
         flex: 33%;
-      } 
+      }
+
+      img {
+          object-fit: cover;
+          border-radius: 4px;
+          height: 200px;
+          width: 200px;
+      }
+
+      ul {
+          list-style-type:none;
+      }
+
+      li {
+          display: inline;
+          visibility: hidden;
+          color: $color-light;
+      }
+      a {
+          display: inline;
+          color: $color-light;
+          text-decoration: solid;
+          size: 12px;
+      }
   }
 
   .over {
       position: absolute;
+
+  }
+
+  .item:hover {
+      img {
+          transition: all 0.7s;
+          opacity: 0.7;
+      }
+      li {
+          
+      }
   }
