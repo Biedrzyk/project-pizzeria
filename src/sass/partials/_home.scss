@@ -120,7 +120,7 @@
     flex-wrap: wrap;
     cursor: crosshair;
 
-    .box {
+    .item {
         position: relative;
         flex: 33%;
     }
@@ -140,39 +140,39 @@
         display: inline;
         visibility: hidden;
         color: $color-light;
-    a {
-        display: inline;
-        color: $color-light;
-        text-decoration: solid;
-        size: 12px;
-    }
-}
-
-.over {
-    position: absolute;
-    top: 30%;
-    left: 25%;
-    transform: translate(-50%, -50%);
-}
-
-.item:hover {
-    img {
-        transition: all 0.7s;
-        opacity: 0.4;
-    }
-    li {
-        visibility: visible;
-        margin-right: 7px;
-    
-    .fa-heart {
-        color: $color-main;
-        margin: 0 2px;
+        a {
+            display: inline;
+            color: $color-light;
+            text-decoration: none;
+            size: 12px;
+        }
     }
 
-    .fa-share-alt {
-        color: $color-light;
-        margin: 0 2px;
+    .over {
+        position: absolute;
+        top: 30%;
+        left: 25%;
+        transform: translate(-50%, -50%);
     }
-}
-}
+
+    .item:hover {
+        img {
+            transition: all 0.3s;
+            opacity: 0.4;
+        }
+        li {
+            visibility: visible;
+            margin-right: 7px;
+
+            .fa-heart {
+                color: $color-main;
+                margin: 0 2px;
+            }
+
+            .fa-share-alt {
+                color: $color-light;
+                margin: 0 2px;
+            }
+        }
+    }
 }
