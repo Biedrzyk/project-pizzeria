@@ -51,6 +51,7 @@ export const select = {
   home: {
     order: '.order-online',
     book: '.book-table',
+    options: '.options a'
   },
   nav: {
     links: '.main-nav a',
