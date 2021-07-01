@@ -1,0 +1,7 @@
+.home-container{
+    margin: ($base-size * 2.5) auto;
+    padding: ($base-size * 4) ($base-size * 2);
+    background: $color-light;
+    border-bottom: 2px solid lighten($color-dark, 55%);
+    border-radius: $radius;
+}
