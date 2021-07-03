@@ -1,3 +1,4 @@
+/*global Flickity */
 import { templates, select } from '../settings.js';
 
 
@@ -6,6 +7,7 @@ class Home {
     const thisHome = this;
 
     thisHome.render(element);
+    thisHome.initWidgets();
   }
 
 
@@ -24,6 +26,17 @@ class Home {
 
   initWidgets() {
     const thisHome = this;
+    
+    setTimeout(() => {
+      thisHome.element = document.querySelector('.carousel');
+      thisHome.movement = new Flickity(thisHome.element, {
+        prevNextButtons: false,
+        wrapAround: true,
+        autoPlay: 4000,
+        cellAlign: 'left',
+        contain: 'true',
+      });
+    }, 2000);
   }
 }
 
