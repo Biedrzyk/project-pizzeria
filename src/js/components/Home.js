@@ -1,4 +1,4 @@
-/*import { templates, select } from '../settings.js';
+import { templates, select } from '../settings.js';
 
 
 class Home {
@@ -22,6 +22,9 @@ class Home {
 
   }
 
+  initWidgets() {
+    const thisHome = this;
+  }
 }
 
-export default Home;*/
+export default Home;

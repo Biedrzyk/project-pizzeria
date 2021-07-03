@@ -179,3 +179,17 @@
     }
   }
 }
+
+/* Footer */
+
+.footer {
+    margin-top: 20px;
+    color: $color-main;
+    display: flex;
+    align-items: center;
+  
+    a,i {
+      margin: 4px;
+      color: $color-main;
+    }
+  }
