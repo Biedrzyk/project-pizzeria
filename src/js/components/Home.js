@@ -1,5 +1,6 @@
 /*global Flickity */
 import { templates, select } from '../settings.js';
+import {app} from '../app.js';
 
 
 class Home {
@@ -8,6 +9,7 @@ class Home {
 
     thisHome.render(element);
     thisHome.initWidgets();
+    thisHome.jumpToSubpage();
   }
 
 
@@ -40,6 +42,13 @@ class Home {
   jumpToSubpage() {
     const thisHome = this;
 
+    thisHome.dom.order.addEventListener('click', function(){
+      app.activatePage('order');
+    });
+   
+    thisHome.dom.book.addEventListener('click', function(){
+      app.activatePage('booking');
+    });
   }
 }
 
