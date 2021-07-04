@@ -27,16 +27,19 @@ class Home {
   initWidgets() {
     const thisHome = this;
     
-    setTimeout(() => {
-      thisHome.element = document.querySelector('.carousel');
-      thisHome.movement = new Flickity(thisHome.element, {
-        prevNextButtons: false,
-        wrapAround: true,
-        autoPlay: 4000,
-        cellAlign: 'left',
-        contain: 'true',
-      });
-    }, 2000);
+    thisHome.element = document.querySelector('.carousel');
+    thisHome.flkty = new Flickity(thisHome.element, {
+      freeScroll: true,
+      wrapAround: true,
+      autoPlay: 4000,
+      cellAlign: 'left',
+      contain: true,
+    });
+  }
+
+  jumpToSubpage() {
+    const thisHome = this;
+
   }
 }
 
