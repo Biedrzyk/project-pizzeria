@@ -28,15 +28,17 @@ class Home {
 
   initWidgets() {
     const thisHome = this;
-    
-    thisHome.element = document.querySelector('.carousel');
-    thisHome.flkty = new Flickity(thisHome.element, {
-      freeScroll: true,
-      wrapAround: true,
-      autoPlay: 4000,
-      cellAlign: 'left',
-      contain: true,
-    });
+
+    setTimeout(() => {
+      thisHome.element = document.querySelector('.carousel');
+      thisHome.flkty = new Flickity(thisHome.element, {
+        freeScroll: true,
+        wrapAround: true,
+        autoPlay: 4000,
+        cellAlign: 'left',
+        contain: true,
+      });
+    }, 2000);
   }
 
   jumpToSubpage() {
