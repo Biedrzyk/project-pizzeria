@@ -2,9 +2,9 @@ import { settings, select, classNames } from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
-//import Home from './components/Home.js';
+import Home from './components/Home.js';
 
-const app = {
+export const app = {
 
   initPages: function () {  // uruchamia się podczas odświeżania strony
     const thisApp = this;
@@ -75,12 +75,12 @@ const app = {
     }
   },
 
-  /*initHome: function () {
+  initHome: function () {
     const thisApp = this;
 
     const homeSection = document.querySelector(select.containerOf.home);
     thisApp.home = new Home(homeSection);
-  },*/
+  },
 
   initBooking: function () {
     const thisApp = this;
@@ -116,7 +116,7 @@ const app = {
   init: function () {
 
     const thisApp = this;
-    //thisApp.initHome();
+    thisApp.initHome();
     thisApp.initPages();
     thisApp.initData();
     thisApp.initBooking();

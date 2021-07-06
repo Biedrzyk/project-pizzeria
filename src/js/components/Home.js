@@ -1,6 +1,6 @@
 /*global Flickity */
 import { templates, select } from '../settings.js';
-import {app} from '../app.js';
+import {app} from '/js/app.js';
 
 
 class Home {
@@ -16,11 +16,11 @@ class Home {
   render(element) {
     const thisHome = this;
 
-    const generateHTML = templates.homeWidget();
+    const generatedHTML = templates.homeWidget();
 
     thisHome.dom = {};
     thisHome.dom.wrapper = element;
-    thisHome.dom.wrapper.innerHTML = generateHTML;
+    thisHome.dom.wrapper.innerHTML = generatedHTML;
     thisHome.dom.order = element.querySelector(select.home.order);
     thisHome.dom.book = element.querySelector(select.home.book);
 
@@ -32,11 +32,12 @@ class Home {
     setTimeout(() => {
       thisHome.element = document.querySelector('.carousel');
       thisHome.flkty = new Flickity(thisHome.element, {
-        freeScroll: true,
         wrapAround: true,
         autoPlay: 4000,
         cellAlign: 'left',
         contain: true,
+        prevNextButtons: false,
+        pageDots: false,
       });
     }, 2000);
   }

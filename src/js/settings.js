@@ -10,7 +10,7 @@ export const select = {
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
-    home: 'home-wrapper',
+    home: '.home-wrapper',
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -145,5 +145,5 @@ export const templates = {
   // CODE ADDED END
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
   
-  homeWidget: Handlebars.compile(document.querySelector(select.templateOf.homeWidget).innerHTML)
+  homeWidget: Handlebars.compile(document.querySelector(select.templateOf.homeWidget).innerHTML),
 };
