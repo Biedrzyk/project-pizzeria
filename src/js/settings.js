@@ -135,14 +135,14 @@ export const settings = {
     repeatParam: 'repeat_ne=false',
   },
   
-  // CODE ADDED END
+
 };
 
 export const templates = {
   menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
-  // CODE ADDED START
+
   cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
-  // CODE ADDED END
+
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
   
   homeWidget: Handlebars.compile(document.querySelector(select.templateOf.homeWidget).innerHTML),
